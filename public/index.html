@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>VCARD VIEWER</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="View VCards here">
+    <meta name="keywords" content="CHANGE ME">
+    <meta name="author" content="Lance Paje">
+    <!-- Load jquery, bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Custom CSS End -->
+</head>
+<body>
+    <h1>VCARD VIEWER</h1>
+
+    <hr>
+	<h3>File Log</h3>
+	<div style = "height:180px; overflow:scroll;">
+		<table style="width:90%" id="logTable">
+			<thead>
+				<tr>
+					<th>File name<br>(click to download)</th>
+					<th>Individual's Name</th>
+					<th>Additional properties</th>
+				</tr>
+			</thead>
+			<tbody  id='tBody'>
+	
+			</tbody>
+		</table>
+	</div>
+	<form ref='uploadForm'
+		id='uploadForm'
+      action='/upload'
+      method='post'
+      encType="multipart/form-data">
+      <div class="form-group">
+      	<input type="file" accept=".vcf" name="uploadFile" id='file' class="btn btn-secondary">
+      	<input type='submit' value='upload' id ='uploadBtn' class="btn btn-secondary">
+      </div>
+    </form>
+    <hr>
+	<h3>View Card</h3>
+	<br>
+	Select Vcard:
+	<div class="vcfLinks" style="height:80px; overflow:scroll" id='links'>
+	
+	</div>
+
+	<table style="width:90%" id ="viewTable">
+		<thead>
+			<tr>
+				<th>Property#</th>
+				<th>Property Name</th>
+				<th>Value(s)</th>
+				<th>Parameters</th>
+			</tr>
+		</thead>
+		<tbody id="viewBody">
+		
+		</tbody>
+	</table>
+	<hr>
+	<h3>Create Vcard</h3>
+	<br>
+	<form ref='VcardForm' id='VcardForm'>
+          <div class="form-group1">
+                <label for="entryBoxName">Name:</label>
+                <input type="text" class="form-control" id="entryBoxName" placeholder="Enter Name">
+				<input type='submit' value='Enter' id='newCardBtn' class="btn btn-secondary">
+          </div>
+    </form>
+	<hr>
+	<h3>Edit Vcard</h3>
+	<div id="editMe">
+	Curently editing:
+	</div>
+	<form ref='PropForm' id='PropForm'>
+          <div class="form-group1">
+                <label for="entryBoxName">Property Name</label>
+                <input type="text" class="form-control" id="propertyName" placeholder="Enter Property">
+				<label for="entryBoxName">Property Value</label>
+                <input type="text" class="form-control" id="valueName" placeholder="Enter Value">
+				<input type='submit' value='Enter' id='editPropBtn' class="btn btn-secondary">
+          </div>
+    </form>
+    <!-- Leave me at the bottom of body -->
+    <script src="index.js"></script>
+	
+</body>
+</html>
